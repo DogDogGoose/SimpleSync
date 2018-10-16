@@ -1,0 +1,10 @@
+# ignore temporary directory, often used for downloading files during test
+temp/
+
+# ignore vim saves
+*~
+*.swp
+
+# ignore temporary project files
+*__pycache__*
+*JSONdump.txt
