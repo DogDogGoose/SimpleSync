@@ -1,6 +1,6 @@
 
 import string
-import sqlite3
+import SimpleSync.syncdb
 
 ###########################
 class SyncManager(object):
@@ -10,6 +10,8 @@ class SyncManager(object):
     def __new__(cls, verbose=False):
         newobj = object.__new__(cls)
         newobj.verbose = verbose
+        newobj.db = SimpleSync.syncdb.syncdb(verbose)
+
         return newobj 
 
     def __init__(self, bidirectional=True, verbose=False):
@@ -21,10 +23,9 @@ class SyncManager(object):
 
     # TODO: change this to changing the config dir
     def setOutputDir(self, odir):
-        newodir = os.path.join(odir, '')
-        if not os.path.isdir(newodir):
-            os.makedirs(newodir)
-
-        self.outdir = newodir
         return
-    
+   
+    def processDir(targetdir):
+        myconnection = self.db.initConnectionForDir(targetdir)
+        return
+       

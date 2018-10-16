@@ -1,5 +1,5 @@
 
-import pprint
+import sqlite3
 
 ###########################
 class syncdb(object):
@@ -17,9 +17,11 @@ class syncdb(object):
     def __str__(self):
         return ""
 
-    def initdb(self, dbfile):
+    def initConnectionForDir(self, dirpath):
+        mydbfile = self.getdbpath(dirpath)
         try:
-            return sqlite3.connect(dbfile)
+            self.db = sqlite3.connect(mydbfile)
+            return
         except:
-            print "ERROR loading database (%s)" % (dbfile)
-    
+            print ("ERROR loading database")
+

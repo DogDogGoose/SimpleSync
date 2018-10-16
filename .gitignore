@@ -4,6 +4,7 @@ temp/
 # ignore vim saves
 *~
 *.swp
+*.swo
 
 # ignore temporary project files
 *__pycache__*
