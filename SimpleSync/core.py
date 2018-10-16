@@ -1,11 +1,9 @@
 
 import string
-import os
-import re
-import pprint
+import sqlite3
 
 ###########################
-class ptabgrab(object):
+class SyncManager(object):
     """
     Main
     """
