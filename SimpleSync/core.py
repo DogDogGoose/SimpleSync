@@ -10,6 +10,7 @@ class SyncManager(object):
     def __new__(cls, verbose=False):
         newobj = object.__new__(cls)
         newobj.verbose = verbose
+        newobj.dbpath = '.'
         newobj.db = SimpleSync.syncdb.syncdb(verbose)
 
         return newobj 
@@ -25,7 +26,10 @@ class SyncManager(object):
     def setOutputDir(self, odir):
         return
    
-    def processDir(targetdir):
+    def setDBDir(self, targetdir):
+        self.dbpath = targetdir
+
+    def processDir(self, targetdir):
         myconnection = self.db.initConnectionForDir(targetdir)
         return
        

@@ -1,4 +1,12 @@
 import argparse
+import os
+
+import SimpleSync.core
+
+###########################
+# Global
+###########################
+gDBDefaultDir = '.'
 
 # 
 # Import local packages
@@ -6,9 +14,11 @@ import argparse
 if __name__ == '__main__' and __package__ is None:
     from os import sys, path
     # print(path.dirname(path.dirname(path.abspath(__file__))))
-    sys.path.append(path.dirname(path.dirname(path.abspath(__file__))))
+    pkgPath = path.dirname(path.dirname(path.abspath(__file__)))
+    sys.path.append(pkgPath)
 
-import SimpleSync.core
+    gDBDefaultDir = os.path.join(pkgPath, 'Database')
+
 
 ###########################
 # Main
@@ -22,6 +32,7 @@ parser.add_argument('--cfgfile', '-f', required=False, help='YAML config path; i
 args = parser.parse_args()
 
 mysync = SimpleSync.core.SyncManager(args.verbose)
+mysync.setDBDir(gDBDefaultDir)
 
 #
 # get the cfg dirs
